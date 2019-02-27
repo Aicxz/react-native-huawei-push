@@ -1,0 +1,33 @@
+{
+    "name": "react-native-huawei-push",
+    "version": "1.0.1",
+    "description": "",
+    "author": "Aicxz",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:Aicxz/react-native-huawei-push.git"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./scripts/run.js"
+    },
+    "keywords": [
+        "react-native",
+        "huawei-push",
+        "huawei",
+        "push"
+    ],
+    "dependencies": {
+        "inquirer": "^6.2.2",
+        "glob": "^7.1.3"
+    },
+    "rnpm": {
+        "android": {
+            "packageInstance": "new HuaweiPushPackage()"
+        },
+        "commands": {
+            "prelink": "node node_modules/react-native-huawei-push/scripts/run.js"
+        }
+    }
+}
