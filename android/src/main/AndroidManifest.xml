@@ -94,7 +94,7 @@
         <!-- 接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（注册、透传消息、通知栏点击事件）广播，
                 此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
                 参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer -->
-        <receiver android:name="com.aicxz.huaweipush.HuaweiPushModule$HuaweiPushRevicer"
+        <receiver android:name="com.aicxz.huaweipush.HuaweiPushModule$HuaweiPushReceiver"
             android:permission="${applicationId}.permission.PROCESS_PUSH_MSG">
             <intent-filter>
                 <!-- 必须,用于接收token -->
@@ -103,6 +103,15 @@
                 <action android:name="com.huawei.android.push.intent.RECEIVE" />
                 <!-- 必须, 用于接收通知栏消息点击事件 此事件不需要开发者处理，只需注册就可以-->
                 <action android:name="com.huawei.intent.action.PUSH_DELAY_NOTIFY"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.aicxz.huaweipush.HuaweiPushModule$HuaweiPushReceiverEx">
+            <intent-filter>
+                <!-- 用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
+                <action android:name="com.huawei.android.push.intent.CLICK" />
+                <!-- 查看push通道是否连接, 不查看则不需要 -->
+                <action android:name="com.huawei.intent.action.PUSH_STATE"/>
             </intent-filter>
         </receiver>
 
@@ -124,7 +133,4 @@
             android:exported="false"/>
     </application>
 
-
 </manifest>
-
-
