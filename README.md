@@ -1,37 +1,45 @@
 
 # react-native-huawei-push
 
-## Getting started
+## 安装
+```
+npm install react-native-huawei-push --save
+```
+or
+```
+yarn add react-native-huawei-push
+```
+## 
 
-`$ npm install react-native-huawei-push --save`
-
-### Mostly automatic installation
-
-`$ react-native link react-native-huawei-push`
-
-### Manual installation
-
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.aicxz.huaweipush.HuaweiPushPackage;` to the imports at the top of the file
-  - Add `new HuaweiPushPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-huawei-push'
-  	project(':react-native-huawei-push').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-huawei-push/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-huawei-push')
-  	```
-
-
-## Usage
+## 集成
+#### android/app/src/main/AndroidManifest.xml 添加配置
+```xml
+<!-- 华为推送 -->
+<application>
+  <meta-data
+    android:name="com.huawei.hms.client.appid"
+    android:value="appid=${HUAWEI_APPID}" />
+</application>
+```
+#### android/build.gradle 设置maven仓库地址
+```
+allprojects {
+  repositories {
+    maven { url 'http://developer.huawei.com/repo/' }
+  }
+}
+```
+#### android/app/build.gradle 设置申请的AppId
+```
+android {
+  defaultConfig {
+    manifestPlaceholders = [
+	  HUAWEI_APPID: "<app_id>",
+    ]
+  }
+}
+```
+## 使用
 ```javascript
 import RNHuaweiPush from 'react-native-huawei-push';
-
-// TODO: What to do with the module?
-RNHuaweiPush;
 ```
