@@ -8,6 +8,7 @@
         "type": "git",
         "url": "git@github.com:Aicxz/react-native-huawei-push.git"
     },
+    "typings": "index.d.ts",
     "main": "index.js",
     "keywords": [
         "react-native",
